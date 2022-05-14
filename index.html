@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="app.js"></script>
+		<link rel="stylesheet" href="style.css">
+	</head>
+
+	<body class="container" ng-app="myApp" ng-controller="todoCtrl">
+
+		<div class="container">
+		<h2>My To-do List</h2>
+
+		<form ng-submit="todoAdd()"><!-- to-do form -->
+			<span>
+			<input type="text" class="addtxt" ng-model="todoInput" size="60" placeholder="Add New"></span> 
+			<span>
+			<input class="btnadd" type="submit" value="Add New"></span>
+		</form>
+		<!-- task list goes here -->
+		<div ng-repeat="x in todoList">
+			<span class="datetxt">{{CurrentDate | date:'dd/MM/yyyy'}}</span>
+			<span class="timetxt">{{CurrentDate | date:'HH:mm:ss'}}</span>
+			<input type="checkbox" ng-model="x.done" style="width: 21px;height: 14px;margin-top: 2%;"> 
+			<span class="task" ng-bind="x.todoText" style="font-size: 25px;"></span>
+			<input type="textarea" class="txtarea" placeholder="more details..">
+		</div>
+
+		<!-- Remove Button -->
+		<button class="btn btn-danger" ng-click="remove()" style="margin:2%;">Remove marked</button>
+	</div>
+	</body>
+</html>
